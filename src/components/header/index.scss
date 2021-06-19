@@ -1,0 +1,36 @@
+@import '../../assets/colors';
+@import '../../assets/mixins';
+
+header {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+
+  .header-content {
+    width: 80vw;
+    display: inherit;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2em 0;
+
+    #menu-desktop {
+      list-style: none;
+      text-transform: uppercase;
+
+      li {
+        display: inline-block;
+        font-weight: bold;
+        margin: 0 1em;
+        font-size: rem-calc(13);
+
+        a {
+          text-decoration: none;
+          color: $white;
+        }
+      }
+    }
+  }
+}

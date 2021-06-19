@@ -1,0 +1,51 @@
+@import '../../../assets/colors';
+@import '../../../assets/mixins';
+
+.categories {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 30px;
+  grid-row-gap: 40px;
+  margin: 12em 0;
+}
+
+.category {
+  background-color: $card-back;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 4em 0 2em;
+  height: rem-calc(204);
+  position: relative;
+
+  .image {
+    position: absolute;
+    height: auto;
+    width: 12em;
+    top: -4em;
+  }
+
+  .title {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: rem-calc(18);
+  }
+
+  .link {
+    text-decoration: none;
+    color: $secondary-text;
+    font-size: rem-calc(13);
+    display: flex;
+    align-items: center;
+    margin-top: 0.7em;
+
+    .arrow {
+      margin-left: 0.5em;
+      position: relative;
+      top: 0.1em;
+    }
+  }
+}
