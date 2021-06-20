@@ -1,0 +1,106 @@
+@import '../../../assets/colors';
+@import '../../../assets/mixins';
+
+section {
+  margin-bottom: 12em;
+
+  .first {
+    background: url('../../../assets/images/pattern-circles.svg')
+      no-repeat -10em -2em;
+    background-color: $orange;
+    width: 100%;
+    height: rem-calc(560);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    .img-cont {
+      height: 100%;
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+
+      img {
+        height: 80%;
+        width: auto;
+        position: relative;
+        bottom: -0.7em;
+      }
+    }
+
+    .text-cont {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .text-content {
+        width: 25em;
+        text-align: left;
+        color: $white;
+
+        h4 {
+          font-size: rem-calc(56);
+          line-height: 58px;
+        }
+
+        p {
+          margin: 1em 0 3em;
+          font-weight: 200;
+          font-size: rem-calc(15);
+        }
+      }
+    }
+  }
+
+  .second {
+    border-radius: 8px;
+    background: url('../../../assets/images/image-speaker-zx7.jpg') no-repeat
+      center center;
+    background-size: cover;
+    height: rem-calc(320);
+    width: 100%;
+    margin: 2.5em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 5em;
+  }
+
+  .third,
+  .second {
+    h4 {
+      font-size: rem-calc(28);
+      margin-bottom: 1em;
+    }
+  }
+
+  .third {
+    height: rem-calc(320);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    & > div {
+      border-radius: 8px;
+      width: 49%;
+      background-color: $card-back;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: 5em;
+
+      &:first-child {
+        background: url('../../../assets/images/image-earphones-yx1.jpg')
+          no-repeat center center;
+        background-size: cover;
+      }
+    }
+  }
+}

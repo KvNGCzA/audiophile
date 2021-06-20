@@ -30,15 +30,36 @@ body {
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
+  font-size: rem-calc(13);
+  color: $white;
 
   &--default {
     background-color: $orange;
     border: 1px solid $orange;
-    color: $white;
-    font-size: rem-calc(13);
 
     &:hover {
       background-color: $lite-orange;
+    }
+  }
+
+  &--black {
+    background-color: $primary-text;
+    border: 1px solid $primary-text;
+
+    &:hover {
+      background-color: rgba(76, 76, 76, 1);
+      border: 1px solid rgba(76, 76, 76, 1);
+    }
+  }
+
+  &--transparent {
+    background-color: transparent;
+    border: 1px solid $primary-text;
+    color: $primary-text;
+
+    &:hover {
+      background-color: $primary-text;
+      color: $white;
     }
   }
 

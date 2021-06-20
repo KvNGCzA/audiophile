@@ -1,0 +1,44 @@
+@import '../../../assets/colors';
+@import '../../../assets/mixins';
+
+.advert {
+  height: rem-calc(588);
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+
+  .text-content {
+    width: 49%;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+
+    h4 {
+      font-weight: bold;
+      font-size: rem-calc(40);
+      text-transform: uppercase;
+      padding-right: 3em;
+      margin-bottom: 0.8em;
+
+      span {
+        color: $orange;
+      }
+    }
+
+    p {
+      color: $secondary-text;
+      font-size: rem-calc(15);
+      letter-spacing: 0;
+      padding-right: 6em;
+      font-weight: 200;
+      line-height: rem-calc(25);
+    }
+  }
+
+  .image {
+    width: 49%;
+    border-radius: 8px;
+  }
+}
