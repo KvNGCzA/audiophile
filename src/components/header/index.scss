@@ -9,6 +9,7 @@ header {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 44;
 
   .header-content {
     width: 80vw;
@@ -31,6 +32,10 @@ header {
         a {
           text-decoration: none;
           color: $white;
+
+          &:hover {
+            color: $orange;
+          }
         }
       }
     }
