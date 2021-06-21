@@ -9,17 +9,17 @@ import { ReactComponent as ArrowRight } from '../../../assets/icons/icon-arrow-r
 const categories = [
   {
     title: 'headphones',
-    link: '/headphones',
+    link: '/category/headphones',
     image: headphones,
   },
   {
     title: 'speakers',
-    link: '/speakers',
+    link: '/category/speakers',
     image: speakers,
   },
   {
     title: 'earphones',
-    link: '/earphones',
+    link: '/category/earphones',
     image: earphones,
   },
 ];

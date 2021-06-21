@@ -1,0 +1,64 @@
+@import '../../../assets/colors';
+@import '../../../assets/mixins';
+
+.products {
+  .product {
+    &:nth-child(2n) {
+      flex-direction: row-reverse;
+
+      .text-cont {
+        padding: 0 5em 0 0;
+      }
+    }
+  }
+}
+
+.product {
+  display: flex;
+  height: rem-calc(560);
+  align-items: center;
+  justify-content: center;
+  margin: 5em 0 13em;
+
+  .image-cont {
+    height: 100%;
+    flex: 1;
+    min-width: 50%;
+
+    img {
+      height: auto;
+      width: 100%;
+      border-radius: rem-calc(8);
+    }
+  }
+
+  .text-cont {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    padding: 0 0 0 5em;
+
+    .ad {
+      color: $orange;
+      text-transform: uppercase;
+      font-size: rem-calc(14);
+      margin-bottom: 1em;
+      letter-spacing: rem-calc(10);
+    }
+
+    h2 {
+      font-size: rem-calc(40);
+      text-transform: uppercase;
+    }
+
+    .desc {
+      font-size: rem-calc(15);
+      font-weight: 200;
+      line-height: rem-calc(25);
+      margin: 2em 0 3em;
+    }
+  }
+}

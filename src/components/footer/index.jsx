@@ -20,13 +20,13 @@ const Footer = () => (
             <Link to='/'>home</Link>
           </li>
           <li>
-            <Link to='/headphones'>headphones</Link>
+            <Link to='/category/headphones'>headphones</Link>
           </li>
           <li>
-            <Link to='/speakers'>speakers</Link>
+            <Link to='/category/speakers'>speakers</Link>
           </li>
           <li>
-            <Link to='/earphones'>earphones</Link>
+            <Link to='/category/earphones'>earphones</Link>
           </li>
         </ul>
         <p className='mission'>
@@ -51,13 +51,13 @@ const Footer = () => (
             <Link to='/'>home</Link>
           </li>
           <li>
-            <Link to='/headphones'>headphones</Link>
+            <Link to='/category/headphones'>headphones</Link>
           </li>
           <li>
-            <Link to='/speakers'>speakers</Link>
+            <Link to='/category/speakers'>speakers</Link>
           </li>
           <li>
-            <Link to='/earphones'>earphones</Link>
+            <Link to='/category/earphones'>earphones</Link>
           </li>
         </ul>
         <div className='social-icons'>

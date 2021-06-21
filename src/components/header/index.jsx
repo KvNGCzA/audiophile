@@ -27,8 +27,8 @@ const Header = () => {
           </Link>
         </div>
 
-        <Link to='/'>
-          <Logo className='mobile-logo' />
+        <Link className='mobile-logo' to='/'>
+          <Logo />
         </Link>
 
         <ul id='menu-desktop'>
@@ -38,17 +38,17 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName='active' to='/headphones'>
+            <NavLink activeClassName='active' to='/category/headphones'>
               headphones
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName='active' to='/speakers'>
+            <NavLink activeClassName='active' to='/category/speakers'>
               speakers
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName='active' to='/earphones'>
+            <NavLink activeClassName='active' to='/category/earphones'>
               earphones
             </NavLink>
           </li>
