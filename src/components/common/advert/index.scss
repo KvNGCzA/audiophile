@@ -58,7 +58,7 @@
     }
 
     .image {
-      height: rem-calc(300);
+      min-height: rem-calc(300);
       margin-bottom: 3em;
     }
 
@@ -73,6 +73,18 @@
 
       p {
         font-weight: 400;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 708px) {
+  .advert {
+    .text-content {
+      padding: 0 1em;
+
+      h4 {
+        font-size: rem-calc(28);
       }
     }
   }

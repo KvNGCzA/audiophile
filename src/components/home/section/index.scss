@@ -147,3 +147,52 @@ section {
     }
   }
 }
+
+@media only screen and (max-width: 708px) {
+  section {
+    .first {
+      background-size: 36em auto;
+      background-position: center -8em;
+
+      .img-cont {
+        margin: 2em 0 1em;
+      }
+
+      .text-cont {
+        margin: 2em 0 3em;
+
+        .text-content {
+          width: 100%;
+
+          h4 {
+            font-size: rem-calc(36);
+            line-height: rem-calc(40);
+          }
+          p {
+            padding: 0 1em;
+          }
+        }
+      }
+    }
+
+    .second {
+      background: url('../../../assets/images/image-speaker-zx7-mobile.jpg')
+        no-repeat center center;
+      background-size: cover;
+      padding: 0 1em;
+    }
+
+    .third {
+      flex-direction: column;
+      height: rem-calc(500);
+
+      & > div {
+        width: 100%;
+
+        &:first-child {
+          margin-bottom: 2.5em;
+        }
+      }
+    }
+  }
+}

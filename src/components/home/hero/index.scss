@@ -56,3 +56,24 @@
     }
   }
 }
+
+@media only screen and (max-width: 708px) {
+  .hero {
+    height: rem-calc(650);
+    background-image: url('../../../assets/images/image-header-mobile.jpg');
+    border-radius: 0;
+
+    .content {
+      margin-top: 4em;
+
+      h2 {
+        font-size: rem-calc(36);
+        line-height: rem-calc(40);
+      }
+
+      .excerpt {
+        padding: 0 1.5em;
+      }
+    }
+  }
+}

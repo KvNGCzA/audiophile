@@ -150,3 +150,44 @@ footer {
     }
   }
 }
+
+@media only screen and (max-width: 708px) {
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4em 0;
+
+    .design {
+      left: initial;
+    }
+
+    .footer-content {
+      align-items: center;
+      justify-content: center;
+
+      & > div {
+        &.left {
+          text-align: center;
+
+          ul {
+            margin: 3em 0;
+            li {
+              display: block;
+              margin: 1.5em 0;
+            }
+          }
+        }
+      }
+
+      .copyright-cont {
+        display: flex;
+        flex-direction: column;
+
+        .copyright {
+          margin: 0 0 3em;
+        }
+      }
+    }
+  }
+}

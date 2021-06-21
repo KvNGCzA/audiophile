@@ -67,3 +67,14 @@
     margin: 9em 0;
   }
 }
+
+@media only screen and (max-width: 708px) {
+  .categories {
+    grid-template-columns: auto;
+    margin: 7em 0 5em;
+  }
+
+  .category {
+    margin-bottom: 3em;
+  }
+}

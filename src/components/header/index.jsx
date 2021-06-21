@@ -10,8 +10,10 @@ const Header = () => (
     <div className='header-content view-width'>
       <div className='logo-cont'>
         <Hamburger className='hamburger' />
-        <Logo />
+        <Logo className='main-logo' />
       </div>
+
+      <Logo className='mobile-logo' />
 
       <ul id='menu-desktop'>
         <li>
