@@ -7,6 +7,7 @@ header {
   align-items: center;
   justify-content: center;
   position: absolute;
+  flex-direction: column;
   top: 0;
   left: 0;
   z-index: 44;
@@ -17,6 +18,7 @@ header {
     justify-content: space-between;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 2em 0;
+    z-index: 54;
 
     .mobile-logo {
       display: none;
@@ -28,7 +30,7 @@ header {
 
       .hamburger {
         display: none;
-        margin-right: 2em;
+        margin-right: 3em;
       }
     }
 
@@ -46,10 +48,38 @@ header {
           text-decoration: none;
           color: $white;
 
+          &.active {
+            color: $orange;
+          }
+
           &:hover {
             color: $orange;
           }
         }
+      }
+    }
+  }
+
+  .mobile-menu {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    background-color: $secondary-text;
+    position: relative;
+    left: 0;
+    top: 0;
+    overflow-y: scroll;
+    border-radius: 0 0 rem-calc(8) rem-calc(8);
+
+    .mobile-menu-content {
+      background-color: $white;
+      padding: 0 2em;
+      top: 0;
+      position: absolute;
+      width: 100%;
+
+      .categories {
+        position: relative;
       }
     }
   }

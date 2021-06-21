@@ -24,8 +24,8 @@ const categories = [
   },
 ];
 
-const Category = ({ title, link, image }) => (
-  <Link className='category' to={link}>
+const Category = ({ title, link, image, callback }) => (
+  <Link className='category' to={link} onClick={callback || function () {}}>
     <img className='image' src={image} alt='' />
     <span className='title'>{title}</span>
     <span className='link'>
@@ -35,10 +35,10 @@ const Category = ({ title, link, image }) => (
   </Link>
 );
 
-const Categories = () => (
+const Categories = ({ callback }) => (
   <div className='categories'>
     {categories.map(category => (
-      <Category {...category} key={category.title} />
+      <Category {...category} key={category.title} callback={callback} />
     ))}
   </div>
 );

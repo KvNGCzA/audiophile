@@ -11,7 +11,10 @@ const Footer = () => (
     <div className='design' />
     <div className='footer-content view-width'>
       <div className='left'>
-        <Logo />
+        <Link to='/'>
+          <Logo />
+        </Link>
+
         <ul>
           <li>
             <Link to='/'>home</Link>
