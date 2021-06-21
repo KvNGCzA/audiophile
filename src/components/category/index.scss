@@ -25,3 +25,13 @@
     }
   }
 }
+
+@media only screen and (max-width: 708px) {
+  .category-page {
+    .category-hero {
+      span {
+        font-size: rem-calc(28);
+      }
+    }
+  }
+}

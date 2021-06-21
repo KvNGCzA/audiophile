@@ -2,9 +2,13 @@ import './index.scss';
 
 const Product = ({ image, name, description }) => (
   <div className='product'>
-    <div className='image-cont'>
-      <img src={`${process.env.PUBLIC_URL}${image.mobile}`} alt='' />
-    </div>
+    <div
+      className='image-cont'
+      style={{
+        background: `url('${process.env.PUBLIC_URL}${image.desktop}') no-repeat center center`,
+        backgroundSize: 'cover',
+      }}
+    ></div>
     <div className='text-cont'>
       <p className='ad'>new product</p>
       <h2>{name}</h2>

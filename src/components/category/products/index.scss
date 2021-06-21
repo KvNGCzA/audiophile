@@ -2,15 +2,7 @@
 @import '../../../assets/mixins';
 
 .products {
-  .product {
-    &:nth-child(2n) {
-      flex-direction: row-reverse;
-
-      .text-cont {
-        padding: 0 5em 0 0;
-      }
-    }
-  }
+  margin-bottom: 13em;
 }
 
 .product {
@@ -18,18 +10,25 @@
   height: rem-calc(560);
   align-items: center;
   justify-content: center;
-  margin: 5em 0 13em;
+  margin: 5em 0 9em;
+
+  &:nth-child(2n) {
+    flex-direction: row-reverse;
+
+    .text-cont {
+      padding: 0 5em 0 0;
+    }
+  }
 
   .image-cont {
     height: 100%;
     flex: 1;
     min-width: 50%;
-
-    img {
-      height: auto;
-      width: 100%;
-      border-radius: rem-calc(8);
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: rem-calc(8);
+    background-color: $card-back !important;
   }
 
   .text-cont {
@@ -59,6 +58,58 @@
       font-weight: 200;
       line-height: rem-calc(25);
       margin: 2em 0 3em;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .product {
+    display: block;
+    height: initial;
+
+    &:nth-child(2n) {
+      flex-direction: column;
+
+      .text-cont {
+        padding: 0 4em;
+      }
+    }
+
+    .text-cont {
+      padding: 0 4em;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .image-cont {
+      width: 100%;
+      height: 40em;
+      background-size: contain !important;
+      margin-bottom: 3em;
+    }
+  }
+}
+
+@media only screen and (max-width: 708px) {
+  .product {
+    .image-cont {
+      height: 24em;
+    }
+
+    &:nth-child(2n) {
+      .text-cont {
+        padding: 0;
+      }
+    }
+
+    .text-cont {
+      padding: 0;
+
+      h2 {
+        font-size: rem-calc(28);
+        padding: 0 3em;
+      }
     }
   }
 }
