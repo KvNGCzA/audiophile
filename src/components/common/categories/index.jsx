@@ -25,14 +25,14 @@ const categories = [
 ];
 
 const Category = ({ title, link, image }) => (
-  <div className='category'>
+  <Link className='category' to={link}>
     <img className='image' src={image} alt='' />
     <span className='title'>{title}</span>
-    <Link to={link} className='link'>
-      shop now
+    <span className='link'>
+      shop
       <ArrowRight className='arrow' />
-    </Link>
-  </div>
+    </span>
+  </Link>
 );
 
 const Categories = () => (

@@ -40,6 +40,40 @@
 
   .image {
     width: 49%;
-    border-radius: 8px;
+    border-radius: rem-calc(8);
+    background: url('../../../assets/images/image-best-gear-tablet.jpg')
+      no-repeat center center;
+    background-size: cover;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .advert {
+    flex-direction: column-reverse;
+    margin-bottom: 6em;
+
+    .image,
+    .text-content {
+      width: 100%;
+    }
+
+    .image {
+      height: rem-calc(300);
+      margin-bottom: 3em;
+    }
+
+    .text-content {
+      text-align: center;
+      padding: 0 4em;
+
+      h4,
+      p {
+        padding: 0;
+      }
+
+      p {
+        font-weight: 400;
+      }
+    }
   }
 }

@@ -5,8 +5,8 @@
   width: 100%;
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-column-gap: 30px;
-  grid-row-gap: 40px;
+  grid-column-gap: rem-calc(30);
+  grid-row-gap: rem-calc(40);
   margin: 12em 0;
 }
 
@@ -14,12 +14,14 @@
   background-color: $card-back;
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
+  border-radius: rem-calc(8);
   align-items: center;
   justify-content: flex-end;
   padding: 4em 0 2em;
   height: rem-calc(204);
   position: relative;
+  text-decoration: none;
+  color: $primary-text;
 
   .image {
     position: absolute;
@@ -35,17 +37,33 @@
   }
 
   .link {
-    text-decoration: none;
     color: $secondary-text;
     font-size: rem-calc(13);
     display: flex;
     align-items: center;
     margin-top: 0.7em;
+    text-transform: uppercase;
+    font-weight: bold;
 
     .arrow {
       margin-left: 0.5em;
       position: relative;
       top: 0.1em;
     }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .link {
+      color: $orange;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .categories {
+    grid-column-gap: rem-calc(10);
+    margin: 9em 0;
   }
 }

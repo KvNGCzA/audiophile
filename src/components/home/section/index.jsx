@@ -26,11 +26,11 @@ const Section = () => (
       <h4>ZX7 SPEAKER</h4>
       <button className='btn btn--transparent'>see product</button>
     </div>
-  
+
     <div className='third'>
       <div></div>
       <div>
-        <h4>ZX7 SPEAKER</h4>
+        <h4>YX1 EARPHONES</h4>
         <button className='btn btn--transparent'>see product</button>
       </div>
     </div>

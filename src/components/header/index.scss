@@ -12,12 +12,21 @@ header {
   z-index: 44;
 
   .header-content {
-    width: 80vw;
     display: inherit;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 2em 0;
+
+    .logo-cont {
+      display: flex;
+      align-items: center;
+
+      .hamburger {
+        display: none;
+        margin-right: 2em;
+      }
+    }
 
     #menu-desktop {
       list-style: none;
@@ -37,6 +46,22 @@ header {
             color: $orange;
           }
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  header {
+    .header-content {
+      .logo-cont {
+        .hamburger {
+          display: inline-block;
+        }
+      }
+
+      #menu-desktop {
+        display: none;
       }
     }
   }

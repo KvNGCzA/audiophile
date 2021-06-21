@@ -5,12 +5,11 @@ section {
   margin-bottom: 12em;
 
   .first {
-    background: url('../../../assets/images/pattern-circles.svg')
-      no-repeat -10em -2em;
+    background: url('../../../assets/images/pattern-circles.svg') no-repeat -10em -2em;
     background-color: $orange;
     width: 100%;
     height: rem-calc(560);
-    border-radius: 8px;
+    border-radius: rem-calc(8);
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -44,7 +43,7 @@ section {
 
         h4 {
           font-size: rem-calc(56);
-          line-height: 58px;
+          line-height: rem-calc(58);
         }
 
         p {
@@ -57,7 +56,7 @@ section {
   }
 
   .second {
-    border-radius: 8px;
+    border-radius: rem-calc(8);
     background: url('../../../assets/images/image-speaker-zx7.jpg') no-repeat
       center center;
     background-size: cover;
@@ -86,7 +85,7 @@ section {
     justify-content: space-between;
 
     & > div {
-      border-radius: 8px;
+      border-radius: rem-calc(8);
       width: 49%;
       background-color: $card-back;
       height: 100%;
@@ -100,6 +99,50 @@ section {
         background: url('../../../assets/images/image-earphones-yx1.jpg')
           no-repeat center center;
         background-size: cover;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  section {
+    .first {
+      flex-direction: column;
+      background-position: center -18.9em;
+      height: auto;
+
+      .img-cont {
+        margin: 4em 0 1em;
+        height: 50%;
+
+        img {
+          height: auto;
+          width: 11em;
+          position: relative;
+          bottom: -0.7em;
+        }
+      }
+
+      .text-cont {
+        margin: 4em 0 3em;
+
+        .text-content {
+          text-align: center;
+
+          p {
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    .second {
+      padding: 0 3em;
+    }
+
+    .third {
+      & > div {
+        padding-left: 2em;
       }
     }
   }

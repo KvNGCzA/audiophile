@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className='main'>
       <Hero />
-      <div className='body'>
+      <div className='body view-width'>
         <Categories />
         <Section />
         <Advert />

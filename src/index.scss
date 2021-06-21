@@ -4,7 +4,7 @@
 
 * {
   font-family: 'Manrope';
-  letter-spacing: 2px;
+  letter-spacing: rem-calc(2);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -25,11 +25,15 @@ body {
   background-color: $page-background;
 }
 
+.view-width {
+  width: 80vw;
+}
+
 .btn {
   padding: 1em 3em;
   text-transform: uppercase;
   font-weight: bold;
-  letter-spacing: 1px;
+  letter-spacing: rem-calc(1);
   font-size: rem-calc(13);
   color: $white;
 
@@ -65,5 +69,11 @@ body {
 
   &:hover {
     cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .view-width {
+    width: 90vw;
   }
 }

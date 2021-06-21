@@ -3,11 +3,12 @@
 
 .hero {
   height: rem-calc(729);
-  background: url('../../../assets/images/image-hero.jpg') no-repeat center center;
+  background: url('../../../assets/images/image-hero.jpg') no-repeat center
+    center;
   background-size: cover;
   display: flex;
   align-items: center;
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 rem-calc(8) rem-calc(8);
   width: 100%;
 
   .content {
@@ -28,7 +29,7 @@
       margin: 0.5em 0;
       font-weight: bold;
       text-transform: uppercase;
-      line-height: 52px;
+      line-height: rem-calc(52);
     }
 
     .excerpt {
@@ -36,6 +37,22 @@
       font-size: rem-calc(15);
       font-weight: 200;
       margin-bottom: 2em;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .hero {
+    background-image: url('../../../assets/images/image-header.jpg');
+    justify-content: center;
+
+    .content {
+      margin-left: 0;
+      text-align: center;
+
+      .excerpt {
+        font-weight: 400;
+      }
     }
   }
 }
