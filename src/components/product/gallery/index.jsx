@@ -6,14 +6,18 @@ const Gallery = ({ first, second, third }) => (
       <div
         className='gallery-image'
         style={{
-          background: `url('${first.desktop}') no-repeat center center`,
+          backgroundImage: `url('${first.desktop}')`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center center',
           backgroundSize: 'cover',
         }}
       ></div>
       <div
         className='gallery-image'
         style={{
-          background: `url('${second.desktop}') no-repeat center center`,
+          backgroundImage: `url('${second.desktop}')`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center center',
           backgroundSize: 'cover',
         }}
       ></div>
@@ -22,7 +26,9 @@ const Gallery = ({ first, second, third }) => (
     <div
       className='alone gallery-image'
       style={{
-        background: `url('${third.desktop}') no-repeat center center`,
+        backgroundImage: `url('${third.desktop}')`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center center',
         backgroundSize: 'cover',
       }}
     ></div>

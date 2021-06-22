@@ -24,8 +24,7 @@
     .image-card {
       min-width: 50%;
       border-radius: rem-calc(8);
-      background-size: contain !important;
-      background-color: $card-back !important;
+      background-color: $card-back;
     }
 
     .text-cont {

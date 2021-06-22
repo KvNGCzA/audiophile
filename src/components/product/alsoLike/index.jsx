@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom';
 
 import './index.scss';
 
-const Card = ({ image, name, slug }) => {
+const Card = ({ image, name, slug, category }) => {
   const history = useHistory();
 
   return (
@@ -10,14 +10,16 @@ const Card = ({ image, name, slug }) => {
       <div
         className='alsolike-image'
         style={{
-          background: `url('${image.desktop}') no-repeat center center`,
+          backgroundImage: `url('${image.desktop}')`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center center',
           backgroundSize: 'cover',
         }}
       ></div>
       <h2>{name}</h2>
       <button
         className='btn btn--default'
-        onClick={() => history.push(`/product/${slug}`)}
+        onClick={() => history.push(`/category/${category}/${slug}`)}
       >
         see product
       </button>

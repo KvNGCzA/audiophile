@@ -2,7 +2,14 @@ import { useHistory } from 'react-router-dom';
 
 import './index.scss';
 
-const Product = ({ slug, image, name, description, new: newProduct }) => {
+const Product = ({
+  slug,
+  image,
+  name,
+  description,
+  new: newProduct,
+  category,
+}) => {
   const history = useHistory();
 
   return (
@@ -10,7 +17,9 @@ const Product = ({ slug, image, name, description, new: newProduct }) => {
       <div
         className='image-cont'
         style={{
-          background: `url('${process.env.PUBLIC_URL}${image.desktop}') no-repeat center center`,
+          backgroundImage: `url('${process.env.PUBLIC_URL}${image.desktop}')`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center center',
           backgroundSize: 'cover',
         }}
       ></div>
@@ -21,7 +30,7 @@ const Product = ({ slug, image, name, description, new: newProduct }) => {
         <button
           className='btn btn--default'
           onClick={() => {
-            history.push(`/product/${slug}`);
+            history.push(`/category/${category}/${slug}`);
           }}
         >
           see product

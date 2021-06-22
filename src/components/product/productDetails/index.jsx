@@ -32,7 +32,9 @@ const ProductDetails = ({
         <div
           className='image-card'
           style={{
-            background: `url('${image.desktop}') no-repeat center center`,
+            backgroundImage: `url('${image.desktop}')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center center',
             backgroundSize: 'contain',
           }}
         ></div>
