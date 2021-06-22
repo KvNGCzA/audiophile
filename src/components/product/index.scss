@@ -1,0 +1,9 @@
+@import '../../assets/colors';
+@import '../../assets/mixins';
+
+.product-page {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,29 @@
+@import '../../../assets/colors';
+@import '../../../assets/mixins';
+
+.gallery-cont {
+  display: flex;
+  height: rem-calc(592);
+  justify-content: space-between;
+  margin: 9em 0;
+
+  .gallery-image {
+    border-radius: rem-calc(8);
+  }
+
+  .images {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    div {
+      height: 47%;
+    }
+  }
+
+  .alone {
+    width: 57%;
+    background-color: blue;
+  }
+}

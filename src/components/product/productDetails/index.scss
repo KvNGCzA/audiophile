@@ -1,0 +1,108 @@
+@import '../../../assets/colors';
+@import '../../../assets/mixins';
+
+.product-details {
+  margin-top: 10em;
+  text-align: left;
+
+  .back-button {
+    font-weight: 200;
+    font-size: rem-calc(15);
+    text-transform: capitalize;
+
+    &:hover {
+      color: $orange;
+      cursor: pointer;
+    }
+  }
+
+  .product-image-cont {
+    display: flex;
+    height: rem-calc(560);
+    margin: 5em 0 11em;
+
+    .image-card {
+      min-width: 50%;
+      border-radius: rem-calc(8);
+      background-size: contain !important;
+      background-color: $card-back !important;
+    }
+
+    .text-cont {
+      padding-left: 7em;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      .ad {
+        color: $orange;
+        text-transform: uppercase;
+        font-size: rem-calc(14);
+        margin-bottom: 1em;
+        letter-spacing: rem-calc(10);
+      }
+
+      h2 {
+        font-size: rem-calc(40);
+        text-transform: uppercase;
+      }
+
+      .desc {
+        font-size: rem-calc(15);
+        font-weight: 200;
+        line-height: rem-calc(25);
+        margin: 2em 0 3em;
+      }
+
+      .price {
+        font-weight: bold;
+        font-size: rem-calc(18);
+        margin-bottom: 2em;
+      }
+
+      .quantity-action {
+        display: flex;
+
+        .quantity-cont {
+          margin-right: 1em;
+        }
+      }
+    }
+  }
+
+  .descriptions {
+    display: flex;
+    font-weight: 200;
+
+    & > div {
+      width: 50%;
+      font-size: rem-calc(15);
+      white-space: pre-line;
+      line-height: rem-calc(25);
+
+      &:first-child {
+        min-width: 57%;
+      }
+
+      &:last-child {
+        padding-left: 7em;
+        p {
+          margin-bottom: 0.7em;
+        }
+      }
+
+      h2 {
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: rem-calc(32);
+        margin-bottom: 1.5em;
+      }
+
+      span {
+        color: $orange;
+        font-weight: bold;
+        margin-right: 1em;
+      }
+    }
+  }
+}

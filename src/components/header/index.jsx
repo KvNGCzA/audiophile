@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import './index.scss';
 import Categories from '../common/categories';
@@ -8,6 +8,7 @@ import { ReactComponent as Cart } from '../../assets/icons/icon-cart.svg';
 import { ReactComponent as Hamburger } from '../../assets/icons/icon-hamburger.svg';
 
 const Header = () => {
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuEl = useRef(null);
 
@@ -18,7 +19,11 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header
+      style={{
+        backgroundColor: location.pathname === '/' ? '' : 'rgba(0, 0, 0, 1)',
+      }}
+    >
       <div className='header-content view-width'>
         <div className='logo-cont'>
           <Hamburger className='hamburger' onClick={handleMenuToggle} />

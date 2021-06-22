@@ -1,0 +1,37 @@
+@import '../../../assets/colors';
+@import '../../../assets/mixins';
+
+.alsolike-cont {
+  text-align: center;
+
+  .heading {
+    font-size: rem-calc(32);
+    text-transform: uppercase;
+  }
+
+  .alsolike-content {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: rem-calc(30);
+    grid-row-gap: rem-calc(40);
+    margin: 4em 0;
+  }
+
+  .alsolike-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .alsolike-image {
+      height: rem-calc(318);
+      width: 100%;
+      border-radius: rem-calc(8);
+    }
+
+    h2 {
+      text-transform: uppercase;
+      margin: 1.5em 0;
+    }
+  }
+}

@@ -25,6 +25,7 @@ const Category = () => {
     };
 
     getData();
+    window.scrollTo(0, 0);
   }, [name]);
 
   return (

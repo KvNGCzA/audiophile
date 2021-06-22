@@ -5,24 +5,26 @@ import Category from './components/category';
 import Footer from './components/footer';
 import Header from './components/header';
 import Home from './components/home';
+import Product from './components/product';
 
-function App() {
-  return (
-    <div className='App'>
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          <Route path='/category/:name'>
-            <Category />
-          </Route>
-        </Switch>
-        <Footer />
-      </Router>
-    </div>
-  );
-}
+const App = () => (
+  <div className='App'>
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route path='/product/:productSlug'>
+          <Product />
+        </Route>
+        <Route path='/category/:name'>
+          <Category />
+        </Route>
+      </Switch>
+      <Footer />
+    </Router>
+  </div>
+);
 
 export default App;
