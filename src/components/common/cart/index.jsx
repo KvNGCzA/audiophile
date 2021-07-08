@@ -1,9 +1,17 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
 import './index.scss';
 import Quantity from '../quantity';
 
-const CartItem = ({ id, quantity, name, image, price, category }) => {
+const CartItem = ({
+  id,
+  quantity,
+  name,
+  image,
+  price,
+  category,
+  updateCart,
+}) => {
   return (
     <div className='cart-item'>
       <div className='left'>
@@ -25,8 +33,8 @@ const CartItem = ({ id, quantity, name, image, price, category }) => {
               padding: '0.5em 0',
             },
           }}
-          // handleIncrease={handleIncrease}
-          // handleDecrease={handleDecrease}
+          handleIncrease={() => updateCart({ id, action: '+' })}
+          handleDecrease={() => updateCart({ id, action: '-' })}
         />
       </div>
     </div>
@@ -41,15 +49,7 @@ const Cart = ({ cartOpen }) => {
     const body = document.getElementsByTagName('body')[0];
 
     if (cartOpen) {
-      const cartContents = JSON.parse(localStorage.getItem('cart') || '[]');
-      let total = cartContents.map(item => item.price * item.quantity);
-
-      total =
-        total.length &&
-        total.reduce((accumulator, currentValue) => accumulator + currentValue);
-
-      setTotal(total);
-      setCart(cartContents);
+      initializeCart();
       body.style.overflowY = 'hidden';
     }
 
@@ -58,10 +58,42 @@ const Cart = ({ cartOpen }) => {
     };
   }, [cartOpen]);
 
+  const initializeCart = () => {
+    const cartContents = JSON.parse(localStorage.getItem('cart') || '[]');
+    let total = cartContents.map(item => item.price * item.quantity);
+
+    total =
+      total.length &&
+      total.reduce((accumulator, currentValue) => accumulator + currentValue);
+
+    setTotal(total);
+    setCart(cartContents);
+  };
+
   const handleRemoveAll = () => {
     localStorage.setItem('cart', '[]');
     setCart([]);
     setTotal(0);
+  };
+
+  const updateCart = ({ id, action }) => {
+    const cartItem = cart.find(item => item.id === id);
+    let updatedCart = [];
+
+    if (action === '+') cartItem.quantity += 1;
+    else cartItem.quantity -= 1;
+
+    if (cartItem.quantity <= 0)
+      updatedCart = [...cart].filter(item => item.id !== id);
+    else
+      updatedCart = [...cart].map(item => {
+        if (item.id === id) return cartItem;
+        else return item;
+      });
+
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    initializeCart();
   };
 
   return (
@@ -72,23 +104,34 @@ const Cart = ({ cartOpen }) => {
       }}
     >
       <div className='cart'>
-        <div className='cart-header'>
-          <p>cart ({cart.length})</p>
-          <button onClick={handleRemoveAll}>Remove all</button>
-        </div>
+        {cart.length > 0 ? (
+          <Fragment>
+            <div className='cart-header'>
+              <p>cart ({cart.length})</p>
+              <button onClick={handleRemoveAll}>Remove all</button>
+            </div>
 
-        <div className='cart-items'>
-          {cart.map(item => (
-            <CartItem {...item} key={item.id} />
-          ))}
-        </div>
+            <div className='cart-items'>
+              {cart.map(item => (
+                <CartItem {...item} key={item.id} updateCart={updateCart} />
+              ))}
+            </div>
 
-        <div className='total-cont'>
-          <span>Total</span>
-          <span>${total}</span>
-        </div>
+            <div className='total-cont'>
+              <span>Total</span>
+              <span>${total}</span>
+            </div>
 
-        <button className='btn btn--default checkout-btn'>checkout</button>
+            <button
+              className='btn btn--default checkout-btn'
+              disabled={cart.length <= 0}
+            >
+              checkout
+            </button>
+          </Fragment>
+        ) : (
+          <p>No items in cart</p>
+        )}
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ const Quantity = ({ handleIncrease, handleDecrease, value, styles }) => (
   <div className='quantity-cont'>
     <button
       onClick={handleDecrease}
-      disabled={value > 1 ? false : true}
+      disabled={value ? false : true}
       style={styles && styles.button}
     >
       -
