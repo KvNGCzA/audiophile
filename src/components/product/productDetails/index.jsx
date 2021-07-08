@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { addCommasToPrice } from '../../../helpers';
 
-import Quantity from '../../common/quantity';
+import './index.scss';
 import AlsoLike from '../alsoLike';
 import Gallery from '../gallery';
-import './index.scss';
+import Quantity from '../../common/quantity';
+import { addCommasToPrice } from '../../../helpers';
 
 const ProductDetails = ({
   image,
@@ -23,18 +23,18 @@ const ProductDetails = ({
   const [imageType, setImageType] = useState('desktop');
 
   const handleResize = useCallback(() => {
-    if (window.innerWidth < 709 && imageType !== 'mobile') {
+    if (window.innerWidth <= 708 && imageType !== 'mobile') {
       setImageType('mobile');
     } else if (
       window.innerWidth > 708 &&
-      window.innerWidth < 1024 &&
+      window.innerWidth <= 1024 &&
       imageType !== 'tablet'
     ) {
       setImageType('tablet');
-    } else if (imageType !== 'desktop') {
+    } else if (window.innerWidth > 1024 && imageType !== 'desktop') {
       setImageType('desktop');
     }
-  }, []);
+  }, [imageType]);
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);

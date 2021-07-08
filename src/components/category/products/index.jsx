@@ -15,18 +15,18 @@ const Product = ({
   const [imageType, setImageType] = useState('desktop');
 
   const handleResize = useCallback(() => {
-    if (window.innerWidth < 709 && imageType !== 'mobile') {
+    if (window.innerWidth <= 708 && imageType !== 'mobile') {
       setImageType('mobile');
     } else if (
       window.innerWidth > 708 &&
-      window.innerWidth < 1024 &&
+      window.innerWidth <= 1024 &&
       imageType !== 'tablet'
     ) {
       setImageType('tablet');
-    } else if (imageType !== 'desktop') {
+    } else if (window.innerWidth > 1024 && imageType !== 'desktop') {
       setImageType('desktop');
     }
-  }, []);
+  }, [imageType]);
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
