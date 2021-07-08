@@ -24,6 +24,26 @@
 
   .alone {
     width: 57%;
-    background-color: blue;
+  }
+}
+
+@media only screen and (max-width: 708px) {
+  .gallery-cont {
+    flex-direction: column;
+    margin: 5em 0;
+    height: rem-calc(756);
+
+    & > div {
+      height: 50%;
+    }
+
+    .alone,
+    .images {
+      width: 100%;
+    }
+
+    .alone {
+      margin-top: 1em;
+    }
   }
 }

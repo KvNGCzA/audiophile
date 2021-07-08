@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom';
 
 import './index.scss';
 
-const Card = ({ image, name, slug, category }) => {
+const Card = ({ image, name, slug, category, imageType }) => {
   const history = useHistory();
 
   return (
@@ -10,10 +10,10 @@ const Card = ({ image, name, slug, category }) => {
       <div
         className='alsolike-image'
         style={{
-          backgroundImage: `url('${image.desktop}')`,
+          backgroundImage: `url('${image[imageType]}')`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
-          backgroundSize: 'cover',
+          backgroundSize: 'contain',
         }}
       ></div>
       <h2>{name}</h2>
@@ -27,13 +27,13 @@ const Card = ({ image, name, slug, category }) => {
   );
 };
 
-const AlsoLike = ({ items }) => (
+const AlsoLike = ({ items, imageType }) => (
   <div className='alsolike-cont'>
     <h2 className='heading'>you may also like</h2>
 
     <div className='alsolike-content'>
       {items.map(item => (
-        <Card {...item} key={item.slug} />
+        <Card {...item} imageType={imageType} key={item.slug} />
       ))}
     </div>
   </div>

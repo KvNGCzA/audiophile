@@ -1,4 +1,6 @@
+import { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { addCommasToPrice } from '../../../helpers';
 
 import Quantity from '../../common/quantity';
 import AlsoLike from '../alsoLike';
@@ -18,6 +20,30 @@ const ProductDetails = ({
   category,
 }) => {
   const history = useHistory();
+  const [imageType, setImageType] = useState('desktop');
+
+  const handleResize = useCallback(() => {
+    if (window.innerWidth < 709 && imageType !== 'mobile') {
+      setImageType('mobile');
+    } else if (
+      window.innerWidth > 708 &&
+      window.innerWidth < 1024 &&
+      imageType !== 'tablet'
+    ) {
+      setImageType('tablet');
+    } else if (imageType !== 'desktop') {
+      setImageType('desktop');
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [handleResize]);
 
   return (
     <div className='product-details'>
@@ -32,7 +58,7 @@ const ProductDetails = ({
         <div
           className='image-card'
           style={{
-            backgroundImage: `url('${image.desktop}')`,
+            backgroundImage: `url('${image[imageType]}')`,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center center',
             backgroundSize: 'contain',
@@ -43,7 +69,7 @@ const ProductDetails = ({
           <span className='ad'>{newProduct ? 'new product' : ''}</span>
           <h2>{name}</h2>
           <p className='desc'>{description}</p>
-          <span className='price'>$ {price}</span>
+          <span className='price'>$ {addCommasToPrice(`${price}`)}</span>
           <div className='quantity-action'>
             <Quantity />
             <button className='btn btn--default'>add to cart</button>
@@ -59,16 +85,18 @@ const ProductDetails = ({
 
         <div>
           <h2>in the box</h2>
-          {includes.map(current => (
-            <p key={current.item}>
-              <span>{current.quantity}x</span> {current.item}
-            </p>
-          ))}
+          <div>
+            {includes.map(current => (
+              <p key={current.item}>
+                <span>{current.quantity}x</span> {current.item}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
 
-      <Gallery {...gallery} />
-      <AlsoLike items={others} />
+      <Gallery {...gallery} imageType={imageType} />
+      <AlsoLike items={others} imageType={imageType} />
     </div>
   );
 };

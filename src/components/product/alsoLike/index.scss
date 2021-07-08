@@ -27,11 +27,35 @@
       height: rem-calc(318);
       width: 100%;
       border-radius: rem-calc(8);
+      background-color: $card-back;
     }
 
     h2 {
       text-transform: uppercase;
       margin: 1.5em 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .alsolike-cont {
+    .heading {
+      font-size: rem-calc(24);
+    }
+  }
+}
+
+@media only screen and (max-width: 708px) {
+  .alsolike-cont {
+    .alsolike-content {
+      grid-template-columns: auto;
+      margin-top: 0.8em;
+    }
+
+    .alsolike-card {
+      .alsolike-image {
+        height: rem-calc(120);
+      }
     }
   }
 }

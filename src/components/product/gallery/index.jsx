@@ -1,23 +1,23 @@
 import './index.scss';
 
-const Gallery = ({ first, second, third }) => (
+const Gallery = ({ first, second, third, imageType }) => (
   <div className='gallery-cont'>
     <div className='images'>
       <div
         className='gallery-image'
         style={{
-          backgroundImage: `url('${first.desktop}')`,
+          backgroundImage: `url('${first[imageType]}')`,
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center center',
+          backgroundPosition: 'top center',
           backgroundSize: 'cover',
         }}
       ></div>
       <div
         className='gallery-image'
         style={{
-          backgroundImage: `url('${second.desktop}')`,
+          backgroundImage: `url('${second[imageType]}')`,
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center center',
+          backgroundPosition: 'top center',
           backgroundSize: 'cover',
         }}
       ></div>
@@ -26,9 +26,9 @@ const Gallery = ({ first, second, third }) => (
     <div
       className='alone gallery-image'
       style={{
-        backgroundImage: `url('${third.desktop}')`,
+        backgroundImage: `url('${third[imageType]}')`,
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center center',
+        backgroundPosition: 'top center',
         backgroundSize: 'cover',
       }}
     ></div>
