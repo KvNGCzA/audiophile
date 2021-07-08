@@ -17,6 +17,14 @@ const CartItem = ({ id, quantity, name, image, price, category }) => {
       <div className='right'>
         <Quantity
           value={quantity}
+          styles={{
+            button: {
+              padding: '0.5em',
+            },
+            input: {
+              padding: '0.5em 0',
+            },
+          }}
           // handleIncrease={handleIncrease}
           // handleDecrease={handleDecrease}
         />
@@ -30,27 +38,37 @@ const Cart = ({ cartOpen }) => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
+    const body = document.getElementsByTagName('body')[0];
+
     if (cartOpen) {
       const cartContents = JSON.parse(localStorage.getItem('cart') || '[]');
-      const total = cartContents
-        .map(item => item.price * item.quantity)
-        .reduce((accumulator, currentValue) => accumulator + currentValue);
+      let total = cartContents.map(item => item.price * item.quantity);
+
+      total =
+        total.length &&
+        total.reduce((accumulator, currentValue) => accumulator + currentValue);
 
       setTotal(total);
       setCart(cartContents);
+      body.style.overflowY = 'hidden';
     }
+
+    return () => {
+      body.style.overflowY = 'scroll';
+    };
   }, [cartOpen]);
 
   const handleRemoveAll = () => {
     localStorage.setItem('cart', '[]');
     setCart([]);
+    setTotal(0);
   };
 
   return (
     <div
       className='cart-cont'
       style={{
-        display: !cartOpen ? 'none' : 'block',
+        display: !cartOpen ? 'none' : 'flex',
       }}
     >
       <div className='cart'>

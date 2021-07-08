@@ -6,6 +6,7 @@ import AlsoLike from '../alsoLike';
 import Gallery from '../gallery';
 import Quantity from '../../common/quantity';
 import { addCommasToPrice } from '../../../helpers';
+import { ReactComponent as CheckMark } from '../../../assets/icons/check-mark.svg';
 
 const ProductDetails = ({
   id,
@@ -23,6 +24,7 @@ const ProductDetails = ({
   const history = useHistory();
   const [imageType, setImageType] = useState('desktop');
   const [quantity, setQuantity] = useState(1);
+  const [addingToCart, setAddingToCart] = useState(false);
 
   const handleResize = useCallback(() => {
     if (window.innerWidth <= 708 && imageType !== 'mobile') {
@@ -56,6 +58,8 @@ const ProductDetails = ({
   };
 
   const addToCart = () => {
+    setAddingToCart(true);
+
     const freshCart = JSON.parse(localStorage.getItem('cart') || '[]');
     let newCart = [...freshCart];
     const exists = newCart.find(item => item.id === id);
@@ -79,6 +83,10 @@ const ProductDetails = ({
     }
 
     localStorage.setItem('cart', JSON.stringify(newCart));
+
+    setTimeout(() => {
+      setAddingToCart(false);
+    }, 1000);
   };
 
   return (
@@ -114,10 +122,11 @@ const ProductDetails = ({
             />
             <button
               className='btn btn--default'
-              disabled={quantity ? false : true}
+              disabled={quantity && !addingToCart ? false : true}
               onClick={addToCart}
             >
-              add to cart
+              {addingToCart ? 'added' : 'add to cart'}
+              {addingToCart ? <CheckMark className='check-mark' /> : ''}
             </button>
           </div>
         </div>

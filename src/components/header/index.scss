@@ -20,6 +20,15 @@ header {
     padding: 2em 0;
     z-index: 54;
 
+    .cart-logo-cont {
+      .cart-logo {
+        &:hover {
+          cursor: pointer;
+          fill: $orange;
+        }
+      }
+    }
+
     .mobile-logo {
       display: none;
     }

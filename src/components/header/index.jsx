@@ -66,7 +66,14 @@ const Header = () => {
             </li>
           </ul>
 
-          <CartLogo onClick={handleCartToggle} />
+          <div className='cart-logo-cont'>
+            {/* <span className='cart-count'>10</span> */}
+            <CartLogo
+              onClick={handleCartToggle}
+              className='cart-logo'
+              fill={cartOpen ? 'rgba(216, 125, 74, 1)' : '#FFF'}
+            />
+          </div>
         </div>
         <div
           ref={menuEl}
