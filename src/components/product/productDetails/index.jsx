@@ -8,6 +8,7 @@ import Quantity from '../../common/quantity';
 import { addCommasToPrice } from '../../../helpers';
 
 const ProductDetails = ({
+  id,
   image,
   name,
   description,
@@ -21,6 +22,7 @@ const ProductDetails = ({
 }) => {
   const history = useHistory();
   const [imageType, setImageType] = useState('desktop');
+  const [quantity, setQuantity] = useState(1);
 
   const handleResize = useCallback(() => {
     if (window.innerWidth <= 708 && imageType !== 'mobile') {
@@ -44,6 +46,40 @@ const ProductDetails = ({
       window.removeEventListener('resize', handleResize);
     };
   }, [handleResize]);
+
+  const handleIncrease = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecrease = () => {
+    setQuantity(quantity - 1);
+  };
+
+  const addToCart = () => {
+    const freshCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    let newCart = [...freshCart];
+    const exists = newCart.find(item => item.id === id);
+
+    if (exists) {
+      exists.quantity = exists.quantity + quantity;
+      newCart = newCart.map(item => {
+        if (item.id === id) return exists;
+
+        return item;
+      });
+    } else {
+      newCart.push({
+        id,
+        quantity,
+        image: image.mobile,
+        name: name.toLowerCase(),
+        price,
+        category: category.toLowerCase(),
+      });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(newCart));
+  };
 
   return (
     <div className='product-details'>
@@ -71,8 +107,18 @@ const ProductDetails = ({
           <p className='desc'>{description}</p>
           <span className='price'>$ {addCommasToPrice(`${price}`)}</span>
           <div className='quantity-action'>
-            <Quantity />
-            <button className='btn btn--default'>add to cart</button>
+            <Quantity
+              value={quantity}
+              handleIncrease={handleIncrease}
+              handleDecrease={handleDecrease}
+            />
+            <button
+              className='btn btn--default'
+              disabled={quantity ? false : true}
+              onClick={addToCart}
+            >
+              add to cart
+            </button>
           </div>
         </div>
       </div>
