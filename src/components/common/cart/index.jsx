@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState } from 'react';
 
 import './index.scss';
 import Quantity from '../quantity';
+import { addCommasToPrice } from '../../../helpers';
 
 const CartItem = ({
   id,
@@ -18,7 +19,7 @@ const CartItem = ({
         <img src={`${process.env.PUBLIC_URL}${image}`} alt='' />
         <div className='info'>
           <span className='name'>{name.replace(category, '')}</span>
-          <span className='price'>${price}</span>
+          <span className='price'>${addCommasToPrice(price)}</span>
         </div>
       </div>
 
@@ -119,7 +120,7 @@ const Cart = ({ cartOpen }) => {
 
             <div className='total-cont'>
               <span>Total</span>
-              <span>${total}</span>
+              <span>${addCommasToPrice(total)}</span>
             </div>
 
             <button

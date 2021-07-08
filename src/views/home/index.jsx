@@ -1,5 +1,5 @@
-import Advert from '../common/advert';
-import Categories from '../common/categories';
+import Advert from '../../components/common/advert';
+import Categories from '../../components/common/categories';
 import Hero from './hero';
 import './index.scss';
 import Section from './section';

@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import './index.scss';
 import AlsoLike from '../alsoLike';
 import Gallery from '../gallery';
-import Quantity from '../../common/quantity';
+import Quantity from '../../../components/common/quantity';
 import { addCommasToPrice } from '../../../helpers';
 import { ReactComponent as CheckMark } from '../../../assets/icons/check-mark.svg';
 
@@ -113,7 +113,7 @@ const ProductDetails = ({
           <span className='ad'>{newProduct ? 'new product' : ''}</span>
           <h2>{name}</h2>
           <p className='desc'>{description}</p>
-          <span className='price'>$ {addCommasToPrice(`${price}`)}</span>
+          <span className='price'>$ {addCommasToPrice(price)}</span>
           <div className='quantity-action'>
             <Quantity
               value={quantity}

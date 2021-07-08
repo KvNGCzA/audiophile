@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import Products from './products';
 
 import './index.scss';
-import Categories from '../common/categories';
-import Advert from '../common/advert';
+import Categories from '../../components/common/categories';
+import Advert from '../../components/common/advert';
 
 const Category = () => {
   let { name } = useParams();

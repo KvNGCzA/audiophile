@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import './index.scss';
-import Advert from '../common/advert';
-import Categories from '../common/categories';
+import Advert from '../../components/common/advert';
+import Categories from '../../components/common/categories';
 import ProductDetails from './productDetails';
 
 const Product = () => {

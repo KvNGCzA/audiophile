@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.scss';
-import Category from './components/category';
+import Category from './views/category';
 import Footer from './components/footer';
 import Header from './components/header';
-import Home from './components/home';
-import Product from './components/product';
+import Home from './views/home';
+import Product from './views/product';
 
 const App = () => (
   <div className='App'>
