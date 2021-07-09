@@ -251,6 +251,7 @@
                 flex-direction: column;
                 align-items: flex-start;
                 font-weight: bold;
+                text-align: left;
 
                 .name {
                   font-size: rem-calc(15);
@@ -306,6 +307,48 @@
 
         .continue-btn {
           width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .checkout-page {
+    .checkout-page-content {
+      .section-parent {
+        flex-direction: column;
+
+        .left,
+        .right {
+          width: 100%;
+        }
+
+        .left {
+          margin-bottom: 4em;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 708px) {
+  .checkout-page {
+    padding: 8em 0;
+
+    .checkout-page-content {
+      .section-parent {
+        .left {
+          h2 {
+            font-size: rem-calc(28);
+          }
+
+          .group {
+            .group-inputs,
+            .group-inputs--single {
+              grid-template-columns: auto;
+            }
+          }
         }
       }
     }
