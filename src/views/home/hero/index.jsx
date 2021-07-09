@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import './index.scss';
 
 const Hero = () => (
@@ -10,7 +12,9 @@ const Hero = () => (
         for the passionate music enthusiast.
       </p>
 
-      <button className='btn btn--default'>see product</button>
+      <Link to='/category/headphones/xx99-mark-two-headphones'>
+        <button className='btn btn--default'>see product</button>
+      </Link>
     </div>
   </div>
 );

@@ -91,10 +91,7 @@ const ProductDetails = ({
 
   return (
     <div className='product-details'>
-      <span
-        className='back-button'
-        onClick={() => history.push(`/category/${category}`)}
-      >
+      <span className='back-button' onClick={() => history.goBack()}>
         go back
       </span>
 

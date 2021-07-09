@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import './index.scss';
 import speaker from '../../../assets/images/image-speaker-zx9.png';
 
@@ -17,21 +19,27 @@ const Section = () => (
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <button className='btn btn--black'>see product</button>
+          <Link to='/category/speakers/zx9-speaker'>
+            <button className='btn btn--black'>see product</button>
+          </Link>
         </div>
       </div>
     </div>
 
     <div className='second'>
       <h4>ZX7 SPEAKER</h4>
-      <button className='btn btn--transparent'>see product</button>
+      <Link to='/category/speakers/zx7-speaker'>
+        <button className='btn btn--transparent'>see product</button>
+      </Link>
     </div>
 
     <div className='third'>
       <div></div>
       <div>
         <h4>YX1 EARPHONES</h4>
-        <button className='btn btn--transparent'>see product</button>
+        <Link to='/category/earphones/yx1-earphones'>
+          <button className='btn btn--transparent'>see product</button>
+        </Link>
       </div>
     </div>
   </section>
