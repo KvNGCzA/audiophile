@@ -19,8 +19,8 @@ const Right = () => {
 
     setTotal(total);
     setCart(cartContents);
-    setVat(total * 0.2);
-    setGrandTotal(total * 0.2 + total + 50);
+    setVat(Math.round(total * 0.2));
+    setGrandTotal(Math.round(total * 0.2) + total + 50);
   }, []);
 
   return (
