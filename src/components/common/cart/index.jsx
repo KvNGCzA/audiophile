@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import './index.scss';
 import Quantity from '../quantity';
@@ -42,7 +43,7 @@ const CartItem = ({
   );
 };
 
-const Cart = ({ cartOpen }) => {
+const Cart = ({ cartOpen, toggleCart }) => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
 
@@ -123,12 +124,14 @@ const Cart = ({ cartOpen }) => {
               <span>${addCommasToPrice(total)}</span>
             </div>
 
-            <button
-              className='btn btn--default checkout-btn'
-              disabled={cart.length <= 0}
-            >
-              checkout
-            </button>
+            <Link to='/checkout' onClick={toggleCart}>
+              <button
+                className='btn btn--default checkout-btn'
+                disabled={cart.length <= 0}
+              >
+                checkout
+              </button>
+            </Link>
           </Fragment>
         ) : (
           <p>No items in cart</p>

@@ -1,0 +1,221 @@
+@import '../../assets/colors';
+@import '../../assets/mixins';
+
+* {
+  letter-spacing: -0.25px;
+}
+
+.checkout-page {
+  background-color: $card-back;
+  min-height: 100vh;
+  padding: 10em 0;
+  display: flex;
+  justify-content: center;
+
+  .checkout-page-content {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    .back-button {
+      font-weight: 200;
+      font-size: rem-calc(15);
+      text-transform: capitalize;
+      letter-spacing: normal;
+
+      &:hover {
+        color: $orange;
+        cursor: pointer;
+      }
+    }
+
+    .section-parent {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin-top: 3em;
+
+      .left,
+      .right {
+        background-color: $white;
+        border-radius: 8px;
+        padding: 3em 2em;
+      }
+
+      .left {
+        width: 65%;
+
+        .payment-method-label {
+          font-size: rem-calc(12);
+          font-weight: bold;
+          text-align: left;
+        }
+
+        .payment-methods {
+          display: flex;
+          flex-direction: column;
+
+          .check-cont {
+            border: 1px solid $input-border;
+            border-radius: 8px;
+            padding: 1.157em;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+
+            &:hover {
+              cursor: pointer;
+              border: 1px solid $orange;
+            }
+
+            &.active {
+              border: 1px solid $orange;
+
+              .check-box-circle {
+                border: 1px solid $orange;
+
+                .check-box-inner-circle {
+                  background-color: $orange;
+                }
+              }
+            }
+
+            .check-box-circle {
+              border: 1px solid $input-border;
+              height: rem-calc(20);
+              width: rem-calc(20);
+              border-radius: 5em;
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-right: 1em;
+
+              .check-box-inner-circle {
+                height: rem-calc(10);
+                width: rem-calc(10);
+                background-color: transparent;
+                border-radius: 5em;
+                position: relative;
+              }
+            }
+
+            input {
+              position: absolute;
+              height: 100%;
+              width: 100%;
+              left: 0;
+              top: 0;
+              opacity: 0;
+            }
+
+            &:first-child {
+              margin-bottom: 1em;
+            }
+          }
+        }
+
+        h2 {
+          font-size: rem-calc(32);
+          color: $primary-text;
+          text-transform: uppercase;
+          text-align: left;
+          font-weight: bold;
+          letter-spacing: 1.14286px;
+          margin-bottom: 1.5em;
+        }
+
+        .group {
+          margin-bottom: 3em;
+
+          .note {
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3em;
+
+            .pod-img {
+              min-height: rem-calc(48);
+              min-width: rem-calc(48);
+              margin-right: 2em;
+            }
+
+            p {
+              text-align: left;
+              font-weight: 200;
+              font-size: rem-calc(15);
+              color: $secondary-text;
+            }
+          }
+
+          h4 {
+            color: $orange;
+            text-transform: uppercase;
+            font-size: rem-calc(13);
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 1.5em;
+            letter-spacing: 0.928571px;
+          }
+
+          .group-inputs,
+          .group-inputs--single {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-column-gap: rem-calc(20);
+            grid-row-gap: rem-calc(20);
+
+            .input-field {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+
+              label {
+                text-transform: capitalize;
+                font-size: rem-calc(12);
+                font-weight: bold;
+                margin-bottom: 1em;
+              }
+
+              input {
+                border: 1px solid $input-border;
+                font-size: rem-calc(14);
+                border-radius: 8px;
+                width: 100%;
+                padding: 1.25em;
+                outline: none !important;
+
+                /* Chrome, Safari, Edge, Opera */
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                  -webkit-appearance: none;
+                  margin: 0;
+                }
+
+                /* Firefox */
+                &[type='number'] {
+                  -moz-appearance: textfield;
+                }
+
+                &::placeholder {
+                  font-weight: bold;
+                  color: rgba(0, 0, 0, 0.4);
+                }
+              }
+            }
+          }
+
+          .group-inputs--single {
+            display: block;
+            margin-bottom: rem-calc(20);
+          }
+        }
+      }
+
+      .right {
+        width: 32%;
+        height: 10em;
+      }
+    }
+  }
+}

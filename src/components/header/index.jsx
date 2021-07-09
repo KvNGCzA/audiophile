@@ -87,7 +87,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <Cart cartOpen={cartOpen} />
+      <Cart cartOpen={cartOpen} toggleCart={handleCartToggle} />
     </Fragment>
   );
 };

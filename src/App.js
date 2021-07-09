@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.scss';
 import Category from './views/category';
+import Checkout from './views/checkout';
 import Footer from './components/footer';
 import Header from './components/header';
 import Home from './views/home';
@@ -20,6 +21,9 @@ const App = () => (
         </Route>
         <Route path='/category/:name'>
           <Category />
+        </Route>
+        <Route path='/checkout'>
+          <Checkout />
         </Route>
       </Switch>
       <Footer />
