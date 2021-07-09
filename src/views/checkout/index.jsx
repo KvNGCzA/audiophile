@@ -1,152 +1,15 @@
-import { Fragment, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import './index.scss';
-import { ReactComponent as PayOnDelivery } from '../../assets/icons/pay-on-delivery.svg';
-
-const InputField = ({ label, placeholder, required, type, styles }) => (
-  <div className='input-field' style={styles && styles.cont}>
-    <label style={styles && styles.label}>{label}</label>
-    <input type={type} placeholder={placeholder} required={required} />
-  </div>
-);
-
-const BillingDetails = () => (
-  <div className='group'>
-    <h4>billing details</h4>
-    <div className='group-inputs'>
-      <InputField label='name' placeholder='Alexei Ward' type='text' required />
-
-      <InputField
-        label='email address'
-        placeholder='alexei@mail.com'
-        type='email'
-        required
-      />
-
-      <InputField
-        label='phone number'
-        placeholder='+1 202-555-0136'
-        type='tel'
-        required
-      />
-    </div>
-  </div>
-);
-
-const ShippingInfo = () => (
-  <div className='group'>
-    <h4>shipping info</h4>
-    <div className='group-inputs--single'>
-      <InputField
-        label='Address'
-        placeholder='1137 Williams Avenue'
-        type='text'
-        required
-      />
-    </div>
-    <div className='group-inputs'>
-      <InputField label='zip code' placeholder='10001' type='number' required />
-
-      <InputField label='city' placeholder='New York' type='text' required />
-
-      <InputField
-        label='country'
-        placeholder='United States'
-        type='text'
-        required
-      />
-    </div>
-  </div>
-);
-
-const PaymentMethod = ({ setPaymentMethod, paymentMethod }) => (
-  <Fragment>
-    <p className='payment-method-label'>Payment Method</p>
-    <div className='payment-methods'>
-      <div
-        className={`check-cont${paymentMethod === 'emon' ? ' active' : ''}`}
-        onClick={() => setPaymentMethod('emon')}
-      >
-        <div className='check-box-circle'>
-          <div className='check-box-inner-circle'></div>
-        </div>
-        <label className='payment-method-label'>e-Money</label>
-      </div>
-
-      <div
-        className={`check-cont${paymentMethod !== 'emon' ? ' active' : ''}`}
-        onClick={() => setPaymentMethod('pod')}
-      >
-        <div className='check-box-circle'>
-          <div className='check-box-inner-circle'></div>
-        </div>
-        <label className='payment-method-label'>Cash on Delivery</label>
-      </div>
-    </div>
-  </Fragment>
-);
-
-const PaymentDetails = ({ setPaymentMethod, paymentMethod }) => {
-  return (
-    <div className='group'>
-      <h4>payment details</h4>
-      <div className='group-inputs'>
-        <PaymentMethod
-          setPaymentMethod={setPaymentMethod}
-          paymentMethod={paymentMethod}
-        />
-        <InputField
-          label='e-Money Number'
-          placeholder='238521993'
-          type='number'
-          required
-          styles={{
-            label: {
-              textTransform: 'initial',
-            },
-            cont: {
-              display: paymentMethod === 'emon' ? 'flex' : 'none',
-            },
-          }}
-        />
-
-        <InputField
-          label='e-Money PIN'
-          placeholder='6891'
-          type='number'
-          required
-          styles={{
-            label: {
-              textTransform: 'initial',
-            },
-            cont: {
-              display: paymentMethod === 'emon' ? 'flex' : 'none',
-            },
-          }}
-        />
-      </div>
-
-      <div
-        className='note'
-        style={{
-          display: paymentMethod !== 'emon' ? 'flex' : 'none',
-        }}
-      >
-        <PayOnDelivery className='pod-img' />
-        <p>
-          The ‘Cash on Delivery’ option enables you to pay in cash when our
-          delivery courier arrives at your residence. Just make sure your
-          address is correct so that your order will not be cancelled.
-        </p>
-      </div>
-    </div>
-  );
-};
+import BillingDetails from './billingDetails';
+import ShippingInfo from './shippingInfo';
+import PaymentDetails from './paymentDetails';
+import { addCommasToPrice } from '../../helpers';
 
 const Left = ({ setPaymentMethod, paymentMethod }) => (
   <div className='left'>
     <h2>Checkout</h2>
-
     <BillingDetails />
     <ShippingInfo />
     <PaymentDetails
@@ -156,7 +19,79 @@ const Left = ({ setPaymentMethod, paymentMethod }) => (
   </div>
 );
 
-const Right = () => <div className='right'></div>;
+const SummaryProduct = ({ cart, total, vat, grandTotal }) => (
+  <div className='summary-products'>
+    {cart.map(item => (
+      <div className='summary-product' key={item.id}>
+        <div className='left-summary'>¸
+          <img src={`${process.env.PUBLIC_URL}${item.image}`} alt='' />
+          <div className='summary-info'>
+            <span className='name'>{item.name.replace(item.category, '')}</span>
+            <span className='price'>${addCommasToPrice(item.price)}</span>
+          </div>
+        </div>
+        <div className='right-summary'>x{item.quantity}</div>
+      </div>
+    ))}
+  </div>
+);
+
+const Right = () => {
+  const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [vat, setVat] = useState(0);
+  const [grandTotal, setGrandTotal] = useState(0);
+
+  useEffect(() => {
+    const cartContents = JSON.parse(localStorage.getItem('cart') || '[]');
+    let total = cartContents.map(item => item.price * item.quantity);
+
+    total =
+      total.length &&
+      total.reduce((accumulator, currentValue) => accumulator + currentValue);
+
+    setTotal(total);
+    setCart(cartContents);
+    setVat(total * 0.2);
+    setGrandTotal(total * 0.2 + total + 50);
+  }, []);
+
+  return (
+    <div className='right'>
+      <h4>summary</h4>
+
+      <SummaryProduct
+        cart={cart}
+        total={total}
+        vat={vat}
+        grandTotal={grandTotal}
+      />
+
+      <div className='info'>
+        <span>Total</span>
+        <span>${addCommasToPrice(total)}</span>
+      </div>
+      <div className='info'>
+        <span>shipping</span>
+        <span>$50</span>
+      </div>
+      <div className='info'>
+        <span>vat (included)</span>
+        <span>${addCommasToPrice(vat)}</span>
+      </div>
+      <div className='info grand-total'>
+        <span>grand total</span>
+        <span>${addCommasToPrice(grandTotal)}</span>
+      </div>
+      <button
+        className='btn btn--default continue-btn'
+        disabled={cart.length <= 0}
+      >
+        continue
+      </button>
+    </div>
+  );
+};
 
 const Checkout = () => {
   const history = useHistory();
