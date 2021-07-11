@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './index.scss';
 
 const Hero = () => (
-  <div className='hero'>
+  <div className='hero' id='home-hero'>
     <div className='content'>
       <p className='highlight'>new product</p>
       <h2>XX99 Mark II Headphones</h2>

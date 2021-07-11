@@ -183,6 +183,8 @@
                 padding: 1.25em;
                 outline: none !important;
                 letter-spacing: -0.25px;
+                font-weight: bold;
+                color: $primary-text;
 
                 /* Chrome, Safari, Edge, Opera */
                 &::-webkit-outer-spin-button,
@@ -197,7 +199,6 @@
                 }
 
                 &::placeholder {
-                  font-weight: bold;
                   color: rgba(0, 0, 0, 0.4);
                 }
               }
