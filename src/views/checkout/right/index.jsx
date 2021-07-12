@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 
 import SummaryProduct from '../summaryProduct';
 import { addCommasToPrice } from '../../../helpers';
+import FinishCheckout from '../finishCheckout';
 
 const Right = () => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [vat, setVat] = useState(0);
+  const [showCheckout, setshowCheckout] = useState(false);
   const [grandTotal, setGrandTotal] = useState(0);
 
   useEffect(() => {
@@ -27,9 +29,7 @@ const Right = () => {
     <div className='right'>
       <h4>summary</h4>
 
-      <SummaryProduct
-        cart={cart}
-      />
+      <SummaryProduct cart={cart} />
 
       <div className='info'>
         <span>Total</span>
@@ -50,9 +50,20 @@ const Right = () => {
       <button
         className='btn btn--default continue-btn'
         disabled={cart.length <= 0}
+        onClick={() => {
+          const body = document.getElementsByTagName('body')[0];
+          body.style.overflowY = 'hidden';
+          setshowCheckout(true);
+          localStorage.removeItem('cart');
+        }}
       >
         continue
       </button>
+      <FinishCheckout
+        cart={cart}
+        grandTotal={`$${addCommasToPrice(grandTotal)}`}
+        showCheckout={showCheckout}
+      />
     </div>
   );
 };
